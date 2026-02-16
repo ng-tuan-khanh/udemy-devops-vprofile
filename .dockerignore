@@ -1,0 +1,30 @@
+# Ansible
+ansible/
+
+# Docker
+*.Dockerfile
+docker-compose.yml
+docker-compose.yaml
+
+# Vagrant
+vagrant/
+
+# Jenkins
+Jenkinsfile
+
+# Git
+.git/
+.gitignore
+
+# Build tools / temp files
+*.swp
+*.tmp
+*.bak
+*.log
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
