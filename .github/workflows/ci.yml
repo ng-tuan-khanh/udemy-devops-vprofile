@@ -8,11 +8,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Clone the repository
+      - name: Code checkout
         uses: actions/checkout@v4
 
       - name: Build
         run: mvn clean install -DskipTests
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v4
+
+      - name: Unit test
+        run: mvn test
 
       - name: Analyze code
         run: mvn checkstyle:checkstyle
