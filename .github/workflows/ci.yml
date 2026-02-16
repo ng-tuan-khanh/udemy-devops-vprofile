@@ -3,6 +3,12 @@ name: CI
 on:
   push:
     branches: ["main"]
+  
+  # pull_request:
+    # branches: ["main", "develop"]
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -11,10 +17,17 @@ jobs:
       - name: Code checkout
         uses: actions/checkout@v4
 
-      - name: Build
+      - name: Maven build
         run: mvn clean install -DskipTests
 
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vprofile-app
+          path: target/*.war
+
   test:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Code checkout
